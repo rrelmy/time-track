@@ -24,3 +24,4 @@ For detailed explanation on how things work, consult the [docs for vue-loader](h
  - [ ] sass-lint
  - [ ] gitlab deployment
  - [ ] webpack clean
+ - [ ] clear old sw caches
