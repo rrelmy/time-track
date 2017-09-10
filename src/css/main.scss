@@ -1,0 +1,50 @@
+:root {
+  /* colors */
+  --brandColor: #509127;
+  --lightBackgroundColor: #EFEFEF;
+  --lineColor: #AAA;
+  --textColor: #333;
+  --lightTextColor: lighten(#333, 50%);
+
+  // dimensions
+  --borderRadius: 0.2rem;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+html {
+  font-family: sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  box-sizing: border-box;
+  color: var(--textColor);
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: var(--brandColor);
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 1em;
+}
+
+input, button {
+  color: inherit;
+
+  &:focus {outline: 0;}
+}
+
+@import "button.scss";
