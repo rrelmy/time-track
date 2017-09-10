@@ -1,12 +1,14 @@
 const path = require('path');
 const webpack = require('webpack');
+const ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: './src/main.js',
     output: {
         path: path.resolve(__dirname, './dist'),
-        publicPath: '/dist/',
-        filename: 'build.js'
+        publicPath: '/',
+        filename: 'build.[hash].js'
     },
     module: {
         rules: [
@@ -33,7 +35,7 @@ module.exports = {
                 test: /\.(png|jpg|gif|svg)$/,
                 loader: 'file-loader',
                 options: {
-                    name: '[name].[ext]?[hash]'
+                    name: '[name].[contenthash].[ext]'
                 }
             },
             {
@@ -42,10 +44,18 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: [{ loader: 'style-loader' }, { loader: 'css-loader' }],
+                use: [{loader: 'style-loader'}, {loader: 'css-loader'}],
             }
         ]
     },
+    plugins: [
+        new ServiceWorkerWebpackPlugin({
+            entry: path.join(__dirname, 'sw.js'),
+        }),
+        new HtmlWebpackPlugin({
+            template: 'index.html'
+        })
+    ],
     resolve: {
         alias: {
             'vue$': 'vue/dist/vue.esm.js'

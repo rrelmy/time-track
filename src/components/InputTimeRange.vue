@@ -29,7 +29,6 @@
                 return this.timeToDate(this.timeTo)
             },
             duration: function () {
-                console.log('compute')
                 if (!this.timeFrom || !this.timeTo) {
                     return '';
                 }
