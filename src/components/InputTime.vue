@@ -41,6 +41,7 @@
             padding: 0.5rem;
             background: transparent;
             min-width: 0;
+            width: auto; // removes fixed with on mobile
         }
 
         button {

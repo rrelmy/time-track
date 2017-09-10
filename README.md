@@ -20,6 +20,7 @@ For detailed explanation on how things work, consult the [docs for vue-loader](h
 ## TODO
 
  - [ ] persist times
+ - [ ] external css file
  - [ ] sass-lint
  - [ ] gitlab deployment
  - [ ] webpack clean
