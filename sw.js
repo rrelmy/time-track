@@ -1,8 +1,7 @@
 /**
  * @author Rémy Böhler
- * @version 1.0.0
  */
-const CACHE_NAME = 'offline-cache-v1'
+const CACHE_NAME = 'offline-cache-v2'
 const urlsToCache = serviceWorkerOption.assets
 urlsToCache.push('/')
 
