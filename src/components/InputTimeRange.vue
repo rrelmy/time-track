@@ -75,6 +75,7 @@
 <style lang="scss">
     .inputTimeRange {
         display: flex;
+        flex-wrap: wrap;
 
         .inputTime {
             flex: 6;
