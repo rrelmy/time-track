@@ -21,8 +21,8 @@ For detailed explanation on how things work, consult the [docs for vue-loader](h
 
  - [ ] persist times
  - [ ] external css file
- - [x] sass-lint
+ - [x] sass-lint (still breaks in main.scss)
  - [ ] sass-lint vue-files
  - [ ] gitlab deployment
- - [ ] webpack clean
+ - [x] webpack clean
  - [ ] clear old sw caches
