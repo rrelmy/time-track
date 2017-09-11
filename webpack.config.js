@@ -57,10 +57,10 @@ module.exports = {
     },
     plugins: [
         new ServiceWorkerWebpackPlugin({
-            entry: path.join(__dirname, 'sw.js'),
+            entry: path.join(__dirname, 'src/sw.js'),
         }),
         new HtmlWebpackPlugin({
-            template: 'index.html'
+            template: 'src/index.html'
         })
     ],
     resolve: {
