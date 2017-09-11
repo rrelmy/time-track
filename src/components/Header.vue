@@ -5,15 +5,15 @@
 </template>
 
 <style lang="scss">
-    .header {
-        background: var(--brandColor);
-        color: white;
-        padding: 0.25rem 0.5rem;
-        box-shadow: 0 0 10px rgba(black, 0.25);
-        text-align: center;
+.header {
+    padding: .25rem .5rem;
+    background: var(--brandColor);
+    color: var(--brightTextColor);
+    text-align: center;
+    box-shadow: 0 0 10px var(--lightShadowColor);
 
-        h2 {
-            margin: 0;
-        }
+    h2 {
+        margin: 0;
     }
+}
 </style>

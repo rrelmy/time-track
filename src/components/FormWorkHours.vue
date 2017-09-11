@@ -18,66 +18,66 @@
 </template>
 
 <script>
-    import InputTimeRange from './InputTimeRange.vue'
+import InputTimeRange from './InputTimeRange.vue'
 
-    export default {
-        components: {
-            InputTimeRange
-        },
-        data() {
-            return {
-                showAddRangeButton: false,
-                ranges: [{}, {}]
-            }
-        },
-        computed: {
-            totalDuration: function () {
-                let duration = 0;
+export default {
+    components: {
+        InputTimeRange
+    },
+    data() {
+        return {
+            showAddRangeButton: false,
+            ranges: [{}, {}]
+        }
+    },
+    computed: {
+        totalDuration: function () {
+            let duration = 0;
 
-                this.ranges.forEach(function (item) {
-                    if (item.duration) {
-                        duration += Number(item.duration)
-                    }
-                })
-
-                if (duration === 0) {
-                    return ''
+            this.ranges.forEach(function (item) {
+                if (item.duration) {
+                    duration += Number(item.duration)
                 }
+            })
 
-                return duration.toFixed(2)
+            if (duration === 0) {
+                return ''
             }
-        },
-        methods: {
-            addRange: function (event) {
-                // TODO create a remove range way
-                event.preventDefault()
 
-                this.ranges.push({});
-            }
+            return duration.toFixed(2)
+        }
+    },
+    methods: {
+        addRange: function (event) {
+            // TODO create a remove range way
+            event.preventDefault()
+
+            this.ranges.push({});
         }
     }
+}
 </script>
 
 <style lang="scss">
-    .formWorkHours {
-        display: flex;
-        justify-content: space-evenly;
-        flex-direction: column;
+.formWorkHours {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    .inputTimeRange {
         flex: 1;
-
-        .inputTimeRange {
-            flex: 1;
-            margin: 0.5rem;
-        }
-
-        .totalDuration {
-            margin: 1rem 0;
-            text-align: center;
-            font-size: 1.5rem;
-        }
-
-        .buttonGroup {
-            margin: 1rem 0;
-        }
+        margin: .5rem;
     }
+
+    .totalDuration {
+        margin: 1rem 0;
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .buttonGroup {
+        margin: 1rem 0;
+    }
+}
 </style>
