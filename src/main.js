@@ -1,14 +1,14 @@
 import Vue from 'vue'
 import App from './App.vue'
-
+import store from './store'
 // files
 import './favicon';
-
 // styles
 import 'normalize.css'
 import './css/main.scss';
 
 new Vue({
+    store,
     el: '#app',
     render: h => h(App)
 })

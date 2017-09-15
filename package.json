@@ -14,7 +14,8 @@
   "devDependencies": {
     "babel-core": "^6.0.0",
     "babel-loader": "^6.0.0",
-    "babel-preset-env": "^1.5.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
     "clean-webpack-plugin": "^0.1.16",
     "cross-env": "^3.0.0",
     "css-loader": "^0.25.0",
@@ -27,6 +28,7 @@
     "style-loader": "^0.18.2",
     "vue-loader": "^12.1.0",
     "vue-template-compiler": "^2.3.3",
+    "vuex": "^2.4.0",
     "webpack": "^2.6.1",
     "webpack-dev-server": "^2.4.5"
   }

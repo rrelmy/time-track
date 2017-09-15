@@ -1,7 +1,7 @@
 <template>
     <form class="formWorkHours">
         <template v-for="(range, index) in ranges">
-            <InputTimeRange v-model="ranges[index]"/>
+            <InputTimeRange v-model="ranges[index]" v-on:input="handleInput"/>
         </template>
 
         <div class="totalDuration">
@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
 import InputTimeRange from './InputTimeRange.vue'
 
 export default {
@@ -25,9 +26,11 @@ export default {
         InputTimeRange
     },
     data() {
+        const defaultRange = [{}, {}]
+        const workHours = this.$store.workHours
         return {
             showAddRangeButton: false,
-            ranges: [{}, {}]
+            ranges: workHours || defaultRange
         }
     },
     computed: {
@@ -48,11 +51,19 @@ export default {
         }
     },
     methods: {
+        ...mapMutations([
+            'saveWorkHours'
+        ]),
         addRange: function (event) {
             // TODO create a remove range way
             event.preventDefault()
 
             this.ranges.push({});
+        },
+        handleInput: function (event) {
+            console.log(this.ranges)
+            // FIXME this makes an endless loop
+            //this.$store.commit('saveWorkHours', this.ranges)
         }
     }
 }

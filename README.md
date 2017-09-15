@@ -17,10 +17,10 @@ npm run build
 
 For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
 
-## TODO
+## Backlog
 
  - [ ] persist times
- - [ ] external css file
+ - [ ] external css file for production
  - [x] sass-lint (still breaks in main.scss)
  - [ ] sass-lint vue-files
  - [ ] gitlab deployment
