@@ -1,8 +1,8 @@
 <template>
     <div class="inputTimeRange">
-        <InputTime v-model="timeFrom" v-on:input="updateValue"/>
+        <InputTime v-bind:value="timeFrom" v-on:input="updateValue"/>
         <div class="separator">bis</div>
-        <InputTime v-model="timeTo" v-on:input="updateValue" icon="🕔"/>
+        <InputTime v-bind:value="timeTo" v-on:input="updateValue" icon="🕔"/>
         <div class="duration">{{ duration }}</div>
     </div>
 </template>
@@ -14,8 +14,8 @@ export default {
     props: ['value'],
     data: function () {
         return {
-            timeFrom: null,
-            timeTo: null
+            timeFrom: this.value.from || null,
+            timeTo: this.value.to || null
         }
     },
     components: {
@@ -52,6 +52,7 @@ export default {
     },
     methods: {
         updateValue: function () {
+            console.warn("CHANGE range", this.timeFrom, this.timeTo)
             const value = {
                 from: this.timeFrom,
                 to: this.timeTo,

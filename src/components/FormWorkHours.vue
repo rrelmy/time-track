@@ -1,12 +1,13 @@
 <template>
-    <form class="formWorkHours">
+    <form class="formWorkHours" v-on:input="eventChange">
         <template v-for="(range, index) in ranges">
-            <InputTimeRange v-model="ranges[index]" v-on:input="handleInput"/>
+            <InputTimeRange v-bind:value="ranges[index]" v-on:input="eventChange"/>
         </template>
 
         <div class="totalDuration">
             {{ totalDuration }}
         </div>
+        {{ count }}
 
         <div class="buttonGroup" v-if="showAddRangeButton">
             <button type="button" class="button button--iconOnly" v-on:click="addRange">
@@ -18,7 +19,7 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
+import { mapMutations, mapState } from 'vuex'
 import InputTimeRange from './InputTimeRange.vue'
 
 export default {
@@ -26,14 +27,15 @@ export default {
         InputTimeRange
     },
     data() {
-        const defaultRange = [{}, {}]
-        const workHours = this.$store.workHours
         return {
-            showAddRangeButton: false,
-            ranges: workHours || defaultRange
+            showAddRangeButton: false
         }
     },
     computed: {
+        ...mapState({
+            ranges: state => state.workHours,
+            count: state => state.count
+        }),
         totalDuration: function () {
             let duration = 0;
 
@@ -51,19 +53,17 @@ export default {
         }
     },
     methods: {
-        ...mapMutations([
-            'saveWorkHours'
-        ]),
         addRange: function (event) {
             // TODO create a remove range way
             event.preventDefault()
 
-            this.ranges.push({});
+            // TODO use a mutation
+            //this.ranges.push({});
         },
-        handleInput: function (event) {
-            console.log(this.ranges)
-            // FIXME this makes an endless loop
-            //this.$store.commit('saveWorkHours', this.ranges)
+        eventChange: function (event) {
+            console.warn("CHANGE Form")
+            console.log("VALUE: ", this.ranges)
+            this.$store.commit('saveWorkHours', this.ranges)
         }
     }
 }
