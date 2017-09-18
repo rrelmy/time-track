@@ -17,7 +17,6 @@ export default {
     // TODO compute emoji based on time
     methods: {
         updateValue: function (value) {
-            console.warn("CHANGED ON INPUT")
             this.$emit('input', value)
         },
         setToNow: function (event) {

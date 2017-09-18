@@ -1,13 +1,12 @@
 <template>
     <form class="formWorkHours" v-on:input="eventChange">
         <template v-for="(range, index) in ranges">
-            <InputTimeRange v-bind:value="ranges[index]" v-on:input="eventChange"/>
+            <InputTimeRange v-model="ranges[index]" v-on:input="eventChange"/>
         </template>
 
         <div class="totalDuration">
             {{ totalDuration }}
         </div>
-        {{ count }}
 
         <div class="buttonGroup" v-if="showAddRangeButton">
             <button type="button" class="button button--iconOnly" v-on:click="addRange">
@@ -32,10 +31,11 @@ export default {
         }
     },
     computed: {
-        ...mapState({
-            ranges: state => state.workHours,
-            count: state => state.count
-        }),
+        ranges: function () {
+            // create a copy of the real data to be able to manipulate it at will and save it back
+            // TODO find a better way …
+            return JSON.parse(JSON.stringify(this.$store.state.workHours));
+        },
         totalDuration: function () {
             let duration = 0;
 
@@ -61,8 +61,6 @@ export default {
             //this.ranges.push({});
         },
         eventChange: function (event) {
-            console.warn("CHANGE Form")
-            console.log("VALUE: ", this.ranges)
             this.$store.commit('saveWorkHours', this.ranges)
         }
     }
