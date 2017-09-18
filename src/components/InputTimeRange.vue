@@ -47,6 +47,11 @@ export default {
             // convert to hours
             duration /= 60
 
+            // if to < from we add 24h
+            if (duration < 0) {
+                duration += 24;
+            }
+
             return duration.toFixed(2);
         }
     },
